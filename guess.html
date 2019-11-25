@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Личный сайт студента GeekBrains</title>
+	<link rel="stylesheet" href="style.css"> 
+	<script type="text/javascript">
+
+		var answer = parseInt(Math.random() * 100);
+		var tryCount = -1;
+		var maxTryCount = 10;
+
+		function readInt(){
+			var number = document.getElementById("userAnswer").value;
+			return parseInt(number);
+		}
+
+		function write(text){
+			document.getElementById("info").innerHTML = text;
+		}
+
+		function hide(id){
+			document.getElementById(id).style.display = "none";
+		}
+
+		
+		function guess(){
+			tryCount++;
+
+			var userAnswer = readInt();
+			if((userAnswer == answer) && ((tryCount % 2) == 0)){
+				write("<b>Поздравляю, выиграл 1 Игрок!</b>");
+				hide("game");
+			} else if ((userAnswer == answer) && ((count % 2) != 0)){
+				write("<b>Поздравляю, выиграл 2 Игрок!</b>");
+				hide("game");
+			} else if(tryCount >= maxTryCount){
+				write("Вы проиграли<br>Правильный ответ: " + answer);
+				hide("game");
+			} else if(userAnswer > answer){
+				write("Вы ввели слишком большое число<br>Попробуйте еще раз. Введите число от 1 до 100");
+			} else if(userAnswer < answer){
+				write("Вы ввели слишком маленькое число<br>Попробуйте еще раз. Введите число от 1 до 100");				
+			}
+		}
+		
+	</script>
+</head>
+<body>
+
+<div class="content">
+	<div class="header">
+		<a href="index.html">Главная</a>
+		<a href="puzzle.html">Загадки</a>
+		<a href="#">Угадайка</a>
+		<a href="generator.html">Генератор паролей</a>
+	</div>
+
+<div class="contentWrap">
+    <div class="content">
+        <div class="center">
+
+			<h1>Игра угадайка</h1>
+
+			<h4 id="info" align="center">Угадайте число от 0 до 100</h4>
+			<div class="box" id = "game" align="center">
+				<table>
+					<tr><td>Игрок № 1</td><td>Игрок № 2</td></tr>
+					<tr><td><input type="text" id="userAnswer"></td><td><input type="text" id="userAnswer"></td></tr>
+   					<tr><td><button onclick="guess()" id="button">Ответить</button></td><td><button onclick="guess()" id="button">Ответить</button></td></tr>	
+				</table>
+							
+			</div>
+
+        </div>
+    </div>
+</div>
+
+	
+
+</div>
+<div class="footer">
+	Copyright &copy; One Piece
+<div>
+
+
+</body>
+</html>
